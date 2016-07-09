@@ -1,5 +1,6 @@
 require 'jobs/version'
 require 'jobs/dependency_error'
+require 'jobs/circular_dependency_error'
 
 module Jobs
 
@@ -46,6 +47,7 @@ module Jobs
   private
 
   def self.process_dependency(dependent_job)
+    begin
     if @job_struct[dependent_job].nil?
       # No dependencies of it's own, so it can be run on it's own
       [dependent_job]
@@ -55,6 +57,16 @@ module Jobs
         process_dependency(@job_struct[dependent_job])
       end
       [@job_struct[dependent_job],dependent_job]
+    end
+    rescue SystemStackError => e
+      # Check that the exception that we are rescuing is the correct one
+      if e.message == 'stack level too deep'
+        # Raise our own exception for this case
+        raise CircularDependencyError, "Jobs can't have circular dependencies"
+      else
+        # This isn't the exception were looking for, so re-raise
+        raise e
+      end
     end
   end
 

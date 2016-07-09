@@ -107,7 +107,7 @@ describe Jobs do
           e: nil,
           f: :b
         }
-        expect(Jobs.order(job_structure)).to raise_error(Jobs::CircularDependencyError,
+        expect { Jobs.order(job_structure) }.to raise_error(Jobs::CircularDependencyError,
                                                          "Jobs can't have circular dependencies")
       end
 
