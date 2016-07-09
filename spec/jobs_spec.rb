@@ -87,7 +87,7 @@ describe Jobs do
           b: nil,
           c: :c
         }
-        expect(Jobs.order(job_structure)).to raise_error(Jobs::DependencyError, "Jobs can't depend on themselves")
+        expect { Jobs.order(job_structure) }.to raise_error(Jobs::DependencyError, "Jobs can't depend on themselves")
       end
 
       # Given the following job structure:

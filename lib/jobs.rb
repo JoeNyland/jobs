@@ -1,4 +1,5 @@
-require "jobs/version"
+require 'jobs/version'
+require 'jobs/dependency_error'
 
 module Jobs
 
@@ -19,6 +20,7 @@ module Jobs
       # Check the job structure
       raise ArgumentError, 'jobs must be symbols' unless job.is_a? Symbol
       raise ArgumentError, 'dependent job must be a symbol or nil' unless job.is_a? Symbol or job.is_a? NilClass
+      raise DependencyError, "Jobs can't depend on themselves" if job == dependent_job
 
       # Check if this job has already been processed (as a dependency of another job)
       next if @sequence.include? job
