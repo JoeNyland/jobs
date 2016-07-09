@@ -1,8 +1,6 @@
 # Jobs
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/jobs`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+This is a little gem that works with jobs in a structure and manages their dependencies and execution order. 
 
 ## Installation
 
@@ -22,7 +20,22 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Require the gem in your code:
+```ruby
+require 'jobs'
+```
+
+### Jobs#order
+
+```ruby
+jobs = {
+  a: nil,           # Job 'a' is not dependent on any other jobs, so it can be run on it's own
+  b: :c,            # Job 'b' is dependent on job 'c' so job 'b' must be executed after job 'c'
+  c: nil            # Job 'v' is not dependent on any other jobs, so it can be run on it's own
+}
+Jobs.order jobs
+ => "acb"
+```
 
 ## Development
 
@@ -32,7 +45,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/jobs. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/MasterRoot24/jobs. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 
 ## License
