@@ -1,5 +1,7 @@
 # Jobs
 
+[![Build Status](https://travis-ci.org/MasterRoot24/jobs.svg?branch=master)](https://travis-ci.org/MasterRoot24/jobs)
+
 This is a little gem that works with jobs in a structure and manages their dependencies and execution order. 
 
 ## Installation
@@ -25,7 +27,7 @@ Require the gem in your code:
 require 'jobs'
 ```
 
-### Jobs#order
+### `Jobs#order`
 
 ```ruby
 jobs = {
