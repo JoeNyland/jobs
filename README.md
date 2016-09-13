@@ -35,7 +35,7 @@ jobs = {
   b: :c,            # Job 'b' is dependent on job 'c' so job 'b' must be executed after job 'c'
   c: nil            # Job 'v' is not dependent on any other jobs, so it can be run on it's own
 }
-Jobs.order jobs
+Jobs.new(jobs).to_s
  => "acb"
 ```
 
