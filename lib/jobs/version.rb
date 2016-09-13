@@ -1,3 +1,3 @@
-module Jobs
+class Jobs
   VERSION = "1.0.0"
 end

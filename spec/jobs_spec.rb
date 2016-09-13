@@ -5,14 +5,15 @@ describe Jobs do
     expect(Jobs::VERSION).not_to be nil
   end
 
-  context 'class variables' do
+  context 'instance methods' do
     describe 'Jobs#order' do
 
       # Given you’re passed an empty string (no jobs), the result should be an empty sequence.
       it 'should pass example 1' do
         job_structure = ''
         expected_output = ''
-        expect(Jobs.order(job_structure)).to eq expected_output
+        j = Jobs.new job_structure
+        expect(j.to_s).to eq expected_output
       end
 
       # Given the following job structure:
@@ -21,7 +22,8 @@ describe Jobs do
       it 'should pass example 2' do
         job_structure = { a: nil }
         expected_output = 'a'
-        expect(Jobs.order(job_structure)).to eq expected_output
+        j = Jobs.new job_structure
+        expect(j.to_s).to eq expected_output
       end
 
       # Given the following job structure:
@@ -36,7 +38,8 @@ describe Jobs do
           c: nil
         }
         expected_output = 'abc'
-        expect(Jobs.order(job_structure)).to eq expected_output
+        j = Jobs.new job_structure
+        expect(j.to_s).to eq expected_output
       end
 
       # Given the following job structure:
@@ -51,7 +54,8 @@ describe Jobs do
           c: nil
         }
         expected_output = 'acb'
-        expect(Jobs.order(job_structure)).to eq expected_output
+        j = Jobs.new job_structure
+        expect(j.to_s).to eq expected_output
       end
 
       # Given the following job structure:
@@ -73,7 +77,8 @@ describe Jobs do
           f: nil
         }
         expected_output = 'afcbde'
-        expect(Jobs.order(job_structure)).to eq expected_output
+        j = Jobs.new job_structure
+        expect(j.to_s).to eq expected_output
       end
 
       # Given the following job structure:
@@ -87,7 +92,7 @@ describe Jobs do
           b: nil,
           c: :c
         }
-        expect { Jobs.order(job_structure) }.to raise_error(Jobs::DependencyError, "Jobs can't depend on themselves")
+        expect { Jobs.new job_structure }.to raise_error(Jobs::DependencyError, "Jobs can't depend on themselves")
       end
 
       # Given the following job structure:
@@ -107,7 +112,7 @@ describe Jobs do
           e: nil,
           f: :b
         }
-        expect { Jobs.order(job_structure) }.to raise_error(Jobs::CircularDependencyError,
+        expect { Jobs.new job_structure }.to raise_error(Jobs::CircularDependencyError,
                                                          "Jobs can't have circular dependencies")
       end
 
