@@ -1,7 +1,5 @@
 # Jobs
 
-[![Build Status](https://travis-ci.org/MasterRoot24/jobs.svg?branch=master)](https://travis-ci.org/MasterRoot24/jobs)
-
 This is a little gem that works with jobs in a structure and manages their dependencies and execution order. 
 
 ## Installation
@@ -47,7 +45,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/MasterRoot24/jobs. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/JoeNyland/jobs. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 
 ## License

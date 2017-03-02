@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ['joenyland@me.com']
 
   spec.summary       = 'Works with jobs in a structure and manages their dependencies and execution order'
-  spec.homepage      = 'https://github.com/MasterRoot24/jobs'
+  spec.homepage      = 'https://github.com/JoeNyland/jobs'
   spec.license       = 'MIT'
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
